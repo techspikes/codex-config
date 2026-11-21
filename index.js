@@ -89,7 +89,13 @@ export function parse (source) {
     } while (take('\n'))
   }
 
-  function string (quote, multiline) {
+  function string (quote, allowMultiline) {
+    const multiline = allowMultiline && take(quote.repeat(3))
+
+    if (!multiline) {
+      position++
+    }
+
     // A newline immediately after the opening delimiter is trimmed.
     if (multiline) {
       take('\n')
@@ -158,14 +164,9 @@ export function parse (source) {
 
       const quote = source[position]
 
-      let key
-
-      if (quote === '"' || quote === "'") {
-        position++
-        key = string(quote, false)
-      } else {
-        key = match(/[A-Za-z0-9_-]+/y)
-      }
+      const key = quote === '"' || quote === "'"
+        ? string(quote, false)
+        : match(/[A-Za-z0-9_-]+/y)
 
       if (key === undefined) {
         fail('Expected a key')
@@ -237,13 +238,7 @@ export function parse (source) {
     const quote = source[position]
 
     if (quote === '"' || quote === "'") {
-      const multiline = take(quote.repeat(3))
-
-      if (!multiline) {
-        position++
-      }
-
-      return string(quote, multiline)
+      return string(quote, true)
     }
 
     if (take('[')) {
@@ -438,27 +433,25 @@ export function stringify (config) {
     if (Array.isArray(value) || isTable(value)) {
       enter(value)
 
-      let text
+      try {
+        if (Array.isArray(value)) {
+          const items = []
 
-      if (Array.isArray(value)) {
-        const items = []
+          for (let i = 0; i < value.length; i++) {
+            if (!Object.hasOwn(value, i)) {
+              throw new TypeError('Cannot write a sparse array')
+            }
 
-        for (let i = 0; i < value.length; i++) {
-          if (!Object.hasOwn(value, i)) {
-            throw new TypeError('Cannot write a sparse array')
+            items.push(format(value[i]))
           }
 
-          items.push(format(value[i]))
+          return '[' + items.join(', ') + ']'
         }
 
-        text = '[' + items.join(', ') + ']'
-      } else {
-        text = '{ ' + Object.entries(value).map(([name, item]) => key(name) + ' = ' + format(item)).join(', ') + ' }'
+        return '{ ' + Object.entries(value).map(([name, item]) => key(name) + ' = ' + format(item)).join(', ') + ' }'
+      } finally {
+        active.delete(value)
       }
-
-      active.delete(value)
-
-      return text
     }
 
     throw new TypeError('Unsupported configuration value')

@@ -6,7 +6,11 @@
 - Separate distinct steps with one blank line. Give validation, state updates,
   and the final return their own visual space. Keep closely related statements
   together.
+- Initialize variables at declaration. Keep intermediate values when they
+  clarify the logic.
 - Use an explicit `else` when two alternatives read more clearly together.
+- Group exception handling around operations that share the same recovery or
+  cleanup.
 - Write short English comments for non-obvious rules. Finish with
   `npm run lint:fix`.
 

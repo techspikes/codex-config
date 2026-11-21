@@ -7,6 +7,7 @@ export default [
   {
     rules: {
       curly: ['error', 'all'],
+      'init-declarations': ['error', 'always'],
       '@stylistic/padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: ['if', 'for', 'while', 'do', 'switch', 'return', 'throw'] },
