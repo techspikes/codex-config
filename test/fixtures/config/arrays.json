@@ -1,0 +1,16 @@
+{
+  "notify": [
+    "one",
+    "two"
+  ],
+  "skills": {
+    "config": [
+      {
+        "name": "one"
+      },
+      {
+        "name": "two"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "developer_instructions": "First\nSecond",
+  "approval_policy": {
+    "granular": {
+      "sandbox_approval": true
+    }
+  }
+}

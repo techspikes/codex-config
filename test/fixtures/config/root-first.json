@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "/workspace/a.b": {
+      "trust_level": "trusted"
+    }
+  },
+  "model": "gpt-5"
+}

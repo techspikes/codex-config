@@ -1,0 +1,16 @@
+model = "gpt-5"
+[projects."/workspace/a.b"]
+trust_level = "trusted"
+[mcp_servers.docs]
+command = "docs-server"
+args = ["--stdio"]
+env = { DOCS_MODE = "local" }
+
+[[skills.config]]
+path = "/workspace/example/SKILL.md"
+enabled = false
+
+[[hooks.SessionStart]]
+[[hooks.SessionStart.hooks]]
+type = "command"
+command = "echo ready"

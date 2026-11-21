@@ -1,0 +1,8 @@
+{
+  "invalidSource": null,
+  "invalidConfig": null,
+  "malformedToml": "x = \"\ud800\"",
+  "malformedConfig": {
+    "x": "\ud800"
+  }
+}

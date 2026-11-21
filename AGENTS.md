@@ -1,0 +1,28 @@
+# Repository guidelines
+
+## Commits
+
+- Follow [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/).
+- Allowed types: `feat`, `fix`, `build`, `chore`, `ci`, `docs`, `style`,
+  `refactor`, `perf`, `test`, `revert`.
+- Use a single-line message for non-breaking changes. For breaking changes,
+  add `!` to the subject and explain the break in a `BREAKING CHANGE:` footer.
+
+## Branches
+
+Follow [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow).
+Branch from `main`. If you can push directly to `main`, prefer a local squash
+merge followed by a push. If direct pushes are blocked, open a pull request and
+squash merge after review and required checks. Delete the topic branch after
+merging. Squashing keeps `main`'s history focused on the final change.
+
+## Versions
+
+Follow [SemVer 2.0.0](https://semver.org/). For breaking changes before
+`1.0.0`, bump MINOR and keep MAJOR at zero.
+
+## Changelog
+
+Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Record notable
+changes in `CHANGELOG.md` under `[Unreleased]` and the relevant change category.
+At release, move the entries to `## [version] - YYYY-MM-DD`.

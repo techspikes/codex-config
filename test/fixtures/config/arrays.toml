@@ -1,0 +1,5 @@
+notify = ["one", "two",]
+[[skills.config]]
+name = "one"
+[[skills.config]]
+name = "two"

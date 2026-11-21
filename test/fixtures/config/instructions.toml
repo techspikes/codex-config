@@ -1,0 +1,4 @@
+developer_instructions = '''
+First
+Second'''
+approval_policy = { granular = { sandbox_approval = true } }
