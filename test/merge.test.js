@@ -7,6 +7,7 @@ const read = name => JSON.parse(readFileSync(new URL('./fixtures/merge/' + name 
 
 test('merges tables recursively and replaces arrays and values from the source', () => {
   const result = merge(read('destination'), read('source'))
+
   assert.deepEqual(result, read('expected'))
   assert.deepEqual(parse(stringify(result)), read('expected'))
   assert.equal(Object.getPrototypeOf(result), Object.prototype)
@@ -26,10 +27,12 @@ test('returns data independent of both inputs', () => {
   const destination = read('destination')
   const source = read('source')
   const result = merge(destination, source)
+
   result.mcp_servers.legacy.enabled = false
   result.mcp_servers.docs.args.push('extra')
   result.skills.config[0].name = 'changed'
   result.approval_policy.granular.sandbox_approval = false
+
   assert.deepEqual(destination, read('destination'))
   assert.deepEqual(source, read('source'))
 })

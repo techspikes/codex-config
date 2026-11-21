@@ -1,5 +1,15 @@
 # Repository guidelines
 
+## Code style
+
+- Use braces for conditionals and loops, including single-statement bodies.
+- Separate distinct steps with one blank line. Give validation, state updates,
+  and the final return their own visual space. Keep closely related statements
+  together.
+- Use an explicit `else` when two alternatives read more clearly together.
+- Write short English comments for non-obvious rules. Finish with
+  `npm run lint:fix`.
+
 ## Commits
 
 - Follow [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/).

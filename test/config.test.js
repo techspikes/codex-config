@@ -12,6 +12,7 @@ const readJson = name => JSON.parse(read(name + '.json'))
 // skills.config, and hooks. See README for source links.
 test('reads documented Codex configuration structures and preserves their data', () => {
   const expected = readJson('documented')
+
   assert.deepEqual(parse(read('documented.toml')), expected)
   assert.deepEqual(parse(stringify(expected)), expected)
 })
@@ -27,14 +28,18 @@ test('reads multiline instructions and inline approval policy', () => {
 test('rejects unsupported values and redefinitions with source locations', () => {
   for (const name of readdirSync(new URL('invalid/', fixtures)).sort()) {
     const source = read('invalid/' + name)
+
     assert.throws(() => parse(source), { name: 'SyntaxError', message: /line \d+, column \d+/ }, name)
   }
+
   assert.deepEqual(parse(read('numbers.toml')), readJson('numbers'))
 })
 
 test('preserves special property names and rejects non-data values', () => {
   const data = readJson('special-properties')
+
   assert.deepEqual(parse(stringify(data)), data)
+
   for (const value of nonData) {
     assert.throws(() => stringify(value), TypeError)
   }
@@ -44,6 +49,7 @@ test('preserves special property names and rejects non-data values', () => {
 for (const name of ['basic-strings', 'arrays', 'implicit-table']) {
   test('reads ' + name, () => {
     const expected = readJson(name)
+
     assert.deepEqual(parse(read(name + '.toml')), expected)
     assert.deepEqual(parse(stringify(expected)), expected)
   })
@@ -52,6 +58,7 @@ for (const name of ['basic-strings', 'arrays', 'implicit-table']) {
 for (const name of ['empty', 'large-floats']) {
   test('writes ' + name, () => {
     const expected = readJson(name)
+
     assert.equal(stringify(expected), read(name + '.toml'))
     assert.deepEqual(parse(read(name + '.toml')), expected)
   })
@@ -59,6 +66,7 @@ for (const name of ['empty', 'large-floats']) {
 
 test('rejects invalid argument types and lone UTF-16 surrogates', () => {
   const { invalidSource, invalidConfig, malformedToml, malformedConfig } = readJson('invalid-js-input')
+
   assert.throws(() => parse(invalidSource), TypeError)
   assert.throws(() => stringify(invalidConfig), TypeError)
   assert.throws(() => parse(malformedToml), SyntaxError)
