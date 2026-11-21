@@ -79,7 +79,7 @@ notation, and negative zero becomes zero.
 
 After installing the development tools, run `npm test` to run the Node.js
 tests and report c8 coverage for the library implementation. Run
-`npm run lint` for linting and `npm run test:types` for type tests. TSTyche may need
+`npm run lint` for linting and `npm run test:typescript` for type tests. TSTyche may need
 registry access to populate its compiler cache.
 
 GitHub Actions uploads the Node.js 24 coverage report from `main` to Codecov

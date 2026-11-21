@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "test": "c8 node --test test/*.test.js",
-    "test:types": "tstyche"
+    "test:typescript": "tstyche"
   },
   "devDependencies": {
     "c8": "^12.0.0",
