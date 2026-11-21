@@ -237,6 +237,23 @@ function isTable (value) {
   return prototype === Object.prototype || prototype === null
 }
 
+export function merge (destination, source, { removeMissing = false } = {}) {
+  if (!isTable(destination) || !isTable(source)) {
+    throw new TypeError('Expected two configuration objects')
+  }
+
+  function mergeTables (destination, source) {
+    const entries = new Map(removeMissing ? [] : Object.entries(destination))
+    for (const [key, value] of Object.entries(source)) {
+      const previous = Object.hasOwn(destination, key) ? destination[key] : undefined
+      entries.set(key, isTable(previous) && isTable(value) ? mergeTables(previous, value) : value)
+    }
+    return Object.fromEntries(entries)
+  }
+
+  return structuredClone(mergeTables(destination, source))
+}
+
 export function stringify (config) {
   if (!isTable(config)) throw new TypeError('Expected a configuration object')
   const active = new Set()

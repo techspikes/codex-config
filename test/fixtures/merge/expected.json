@@ -1,0 +1,15 @@
+{
+  "model": "new",
+  "notify": [],
+  "mcp_servers": {
+    "docs": { "command": "new", "args": ["new"], "env": { "KEEP": "yes" } },
+    "legacy": { "enabled": true }
+  },
+  "skills": { "config": [{ "name": "new" }] },
+  "profiles": { "old": true },
+  "approval_policy": { "granular": { "sandbox_approval": true } },
+  "features": false,
+  "model_provider": "test",
+  "__proto__": { "destination": true, "source": true },
+  "constructor": { "destination": true, "source": true }
+}

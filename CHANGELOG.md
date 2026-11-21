@@ -11,3 +11,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added `parse` and `stringify` for the subset of TOML used by Codex CLI configuration files.
 - Added TypeScript declarations for the public API, including the `CodexConfig` type.
+- Added recursive configuration merging with optional removal of destination-only keys.

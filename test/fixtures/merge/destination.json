@@ -1,0 +1,14 @@
+{
+  "model": "old",
+  "notify": ["old", "args"],
+  "mcp_servers": {
+    "docs": { "command": "old", "args": ["old"], "env": { "KEEP": "yes" } },
+    "legacy": { "enabled": true }
+  },
+  "skills": { "config": [{ "name": "old" }] },
+  "profiles": { "old": true },
+  "approval_policy": "never",
+  "features": { "old": true },
+  "__proto__": { "destination": true },
+  "constructor": { "destination": true }
+}

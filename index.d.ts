@@ -7,3 +7,9 @@ export interface CodexConfig {
 
 export function parse (source: string): CodexConfig
 export function stringify (config: CodexConfig): string
+
+export interface MergeOptions {
+  removeMissing?: boolean
+}
+
+export function merge (destination: CodexConfig, source: CodexConfig, options?: MergeOptions): CodexConfig

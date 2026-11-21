@@ -1,0 +1,12 @@
+{
+  "model": "new",
+  "notify": [],
+  "mcp_servers": { "docs": { "command": "new", "args": ["new"] } },
+  "skills": { "config": [{ "name": "new" }] },
+  "profiles": {},
+  "approval_policy": { "granular": { "sandbox_approval": true } },
+  "features": false,
+  "model_provider": "test",
+  "__proto__": { "source": true },
+  "constructor": { "source": true }
+}

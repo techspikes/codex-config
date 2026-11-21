@@ -33,6 +33,22 @@ If you overwrite `config.toml` with the result of `stringify()`, any comments
 you added by hand are lost. This applies to both standalone and end-of-line
 comments. The original formatting is also discarded.
 
+### Merge configurations
+
+```js
+import { readFileSync } from 'node:fs'
+import { merge, parse, stringify } from '@techspikes/codex-config'
+
+const destination = parse(readFileSync('config.toml', 'utf8'))
+const source = parse(readFileSync('overrides.toml', 'utf8'))
+const updatedToml = stringify(merge(destination, source))
+```
+
+The source adds or overrides values. Tables merge recursively, and arrays
+are replaced in full. Pass `{ removeMissing: true }` as the third argument
+to remove destination-only keys at every level. Writing the generated TOML
+back to disk discards the original comments and formatting.
+
 ## API
 
 - `parse(source)` reads TOML text and returns a JSON-compatible configuration
@@ -41,8 +57,11 @@ comments. The original formatting is also discarded.
 - `stringify(config)` returns TOML text. It writes direct values before nested
   tables and uses inline tables for objects inside arrays. Unsupported values
   and circular references throw a `TypeError`.
+- `merge(destination, source, options?)` returns an independent configuration
+  object. Both inputs must be configuration objects. `removeMissing` defaults
+  to `false`.
 
-TypeScript users can import the `CodexConfig` type. Codex CLI validates
+TypeScript users can import `CodexConfig` and `MergeOptions`. Codex CLI validates
 configuration fields.
 
 ## Supported TOML
