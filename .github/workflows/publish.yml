@@ -68,7 +68,7 @@ jobs:
           check-latest: true
           registry-url: https://registry.npmjs.org
           package-manager-cache: false
-      - name: Publish a new stable version
+      - name: Stage a new stable version for npm approval
         run: |
           package=$(jq -er '.name' package.json)
           version=$(jq -er '.version' package.json)
@@ -86,10 +86,10 @@ jobs:
 
             echo "npm already has $version or a newer stable version."
           elif jq -e '.error.code == "E404"' <<< "$published" > /dev/null; then
-            # Publish when npm finds no stable version in the requested range.
-            npm publish --access public
+            # Stage when npm finds no stable version in the requested range.
+            npm stage publish --access public
           else
-            # Report lookup errors so a failed check cannot trigger publication.
+            # Report lookup errors so a failed check cannot stage a package.
             echo "$published" >&2
             exit 1
           fi

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Stage npm releases for maintainer approval with two-factor authentication before publication.
+
 ## [1.0.1] - 2026-11-23
 
 ### Added
