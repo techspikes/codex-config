@@ -8,21 +8,8 @@ const fixtures = new URL('./fixtures/config/', import.meta.url)
 const read = name => readFileSync(new URL(name, fixtures), 'utf8')
 const readJson = name => JSON.parse(read(name + '.json'))
 
-// Codex CLI 0.171.0 config reference and sample: projects, MCP servers,
-// skills.config, and hooks. See README for source links.
-test('reads documented Codex configuration structures and preserves their data', () => {
-  const expected = readJson('documented')
-
-  assert.deepEqual(parse(read('documented.toml')), expected)
-  assert.deepEqual(parse(stringify(expected)), expected)
-})
-
 test('writes root values before quoted project tables', () => {
   assert.equal(stringify(readJson('root-first')), read('root-first.toml'))
-})
-
-test('reads multiline instructions and inline approval policy', () => {
-  assert.deepEqual(parse(read('instructions.toml')), readJson('instructions'))
 })
 
 test('rejects unsupported values and redefinitions with source locations', () => {
@@ -45,13 +32,14 @@ test('preserves special property names and rejects non-data values', () => {
   }
 })
 
-// TOML 1.0 strings, arrays, tables, and arrays of tables.
-for (const name of ['basic-strings', 'arrays', 'implicit-table']) {
-  test('reads ' + name, () => {
+// Includes adapted examples from the Codex configuration reference and sample.
+for (const name of ['documented', 'instructions', 'codex-sample', 'basic-strings', 'arrays', 'implicit-table']) {
+  test('round-trips ' + name, () => {
     const expected = readJson(name)
+    const parsed = parse(read(name + '.toml'))
 
-    assert.deepEqual(parse(read(name + '.toml')), expected)
-    assert.deepEqual(parse(stringify(expected)), expected)
+    assert.deepEqual(parsed, expected)
+    assert.deepEqual(parse(stringify(parsed)), expected)
   })
 }
 

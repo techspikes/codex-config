@@ -1,0 +1,28 @@
+{
+  "model_provider": "azure",
+  "default_permissions": "workspace",
+  "model_providers": {
+    "azure": {
+      "name": "Azure",
+      "base_url": "https://example.openai.azure.com/openai",
+      "wire_api": "responses",
+      "query_params": { "api-version": "2025-04-01-preview" },
+      "env_key": "AZURE_OPENAI_API_KEY"
+    }
+  },
+  "permissions": {
+    "workspace": {
+      "workspace_roots": { "~/code/app": true },
+      "filesystem": {
+        "glob_scan_max_depth": 3,
+        ":workspace_roots": { ".": "write", "**/*.env": "deny" },
+        "/absolute/path/to/secrets": "deny"
+      },
+      "network": { "domains": { "api.openai.com": "allow" } }
+    }
+  },
+  "plugins": {
+    "_default": { "enabled": false },
+    "review@team": { "enabled": true }
+  }
+}

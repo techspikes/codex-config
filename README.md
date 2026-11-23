@@ -1,7 +1,6 @@
 # @techspikes/codex-config
 
 [![AI Generated | Codex](https://img.shields.io/badge/AI%20Generated-Codex-blue?style=flat)](https://shields.io/)
-[![Node.js CI](https://github.com/techspikes/codex-config/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/techspikes/codex-config/actions/workflows/ci.yml)
 [![Coverage](https://codecov.io/gh/techspikes/codex-config/branch/main/graph/badge.svg)](https://app.codecov.io/gh/techspikes/codex-config)
 [![neostandard javascript style](https://img.shields.io/badge/code_style-neostandard-brightgreen?style=flat)](https://github.com/neostandard/neostandard)
 [![npm version](https://img.shields.io/npm/v/%40techspikes/codex-config?style=flat)](https://www.npmjs.com/package/@techspikes/codex-config)
@@ -78,18 +77,16 @@ notation, and negative zero becomes zero.
 ## Development
 
 After installing the development tools, run `npm test` to run the Node.js
-tests and report c8 coverage for the library implementation. Run
+tests. c8 requires 100% statement, branch, function, and line coverage for the
+library implementation and generates an LCOV report. Run
 `npm run lint` for linting and `npm run test:typescript` for type tests. TSTyche may need
 registry access to populate its compiler cache.
-
-GitHub Actions uploads the Node.js 24 coverage report from `main` to Codecov
-when the repository has a `CODECOV_TOKEN` Actions secret.
 
 The Codex tests derive their input and expected values from the
 [configuration reference](https://developers.openai.com/codex/config-reference),
 the [sample configuration](https://learn.chatgpt.com/docs/config-file/config-sample)
 and the [CLI 0.171.0 schema](https://github.com/openai/codex/blob/rust-v0.171.0/codex-rs/core/config.schema.json).
-The cases cover project trust, MCP subprocess arguments and environment,
-per-skill overrides, session-start hooks, developer instructions and granular
-approval policy. See the [fixture notes](test/fixtures/toml-test/README.md)
-for upstream TOML tests.
+The round-trip cases cover project trust, MCP subprocess settings, per-skill
+overrides, session-start hooks, developer instructions, granular approval
+policy, model providers, permissions profiles, and plugins. See the
+[fixture notes](test/fixtures/toml-test/README.md) for upstream TOML tests.

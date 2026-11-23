@@ -43,3 +43,19 @@ test('requires two configuration objects', () => {
     assert.throws(() => merge(read('empty'), value), TypeError)
   }
 })
+
+test('round-trips and merges deeply nested arrays and tables', () => {
+  const path = Array(64).fill('a').join('.')
+  const input = 'array = ' + '['.repeat(64) + 'true' + ']'.repeat(64) + '\n' + path + ' = true'
+  const config = parse(input)
+
+  assert.deepEqual(parse(stringify(config)), config)
+  assert.deepEqual(merge(config, config), config)
+})
+
+test('round-trips and merges large configurations', () => {
+  const config = { values: Array(10_000).fill(true), text: 'x'.repeat(1024 * 1024) }
+
+  assert.deepEqual(parse(stringify(config)), config)
+  assert.deepEqual(merge({ values: config.values }, { text: config.text }), config)
+})

@@ -1,5 +1,8 @@
 # Set default behavior to automatically convert line endings
 * text=auto eol=lf
 
-
 test/fixtures/config/instructions.toml -text
+test/fixtures/toml-test/invalid/control/bare-cr.toml -text whitespace=cr-at-eol,-blank-at-eof
+test/fixtures/toml-test/invalid/inline-table/linebreak-01.toml -whitespace
+test/fixtures/toml-test/valid/newline-crlf.toml -text whitespace=cr-at-eol
+test/fixtures/toml-test/valid/string/multiline-escaped-crlf.toml -text whitespace=cr-at-eol
