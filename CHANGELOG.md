@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Stage npm releases for maintainer approval with two-factor authentication before publication.
 - Pin CI actions to commit SHAs and install dependencies from the lockfile with `npm ci`.
+- Update the Codecov action to use the current source for the uploader signing key.
 
 ## [1.0.1] - 2026-11-23
 
