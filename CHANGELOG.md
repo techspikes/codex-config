@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Automated npm publishing for new stable versions after a GitHub Release and successful CI on `main`.
+
 ## [1.0.0] - 2026-11-21
 
 ### Added
