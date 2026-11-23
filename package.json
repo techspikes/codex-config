@@ -1,6 +1,6 @@
 {
   "name": "@techspikes/codex-config",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Parse and stringify Codex CLI config.toml files",
   "author": "knzbr <87257088+knzbr@users.noreply.github.com>",
   "license": "MIT",
