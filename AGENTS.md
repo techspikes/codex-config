@@ -21,6 +21,10 @@
   `refactor`, `perf`, `test`, `revert`.
 - Use a single-line message for non-breaking changes. For breaking changes,
   add `!` to the subject and explain the break in a `BREAKING CHANGE:` footer.
+- Before each commit, verify that `README.md` is up to date and update it if
+  needed.
+- Before each commit, check for missing `CHANGELOG.md` updates or missing
+  version bumps required by SemVer.
 
 ## Branches
 
