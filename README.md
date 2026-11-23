@@ -1,6 +1,7 @@
 # @techspikes/codex-config
 
 [![AI Generated | Codex](https://img.shields.io/badge/AI%20Generated-Codex-blue?style=flat)](https://shields.io/)
+[![Node.js CI](https://github.com/techspikes/codex-config/actions/workflows/ci.yml/badge.svg)](https://github.com/techspikes/codex-config/actions/workflows/ci.yml)
 [![Coverage](https://codecov.io/gh/techspikes/codex-config/branch/main/graph/badge.svg)](https://app.codecov.io/gh/techspikes/codex-config)
 [![neostandard javascript style](https://img.shields.io/badge/code_style-neostandard-brightgreen?style=flat)](https://github.com/neostandard/neostandard)
 [![npm version](https://img.shields.io/npm/v/%40techspikes/codex-config?style=flat)](https://www.npmjs.com/package/@techspikes/codex-config)
