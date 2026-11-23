@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Automated npm publishing for new stable versions after a GitHub Release and successful CI on `main`.
+- Added 25 upstream TOML test cases and round-trip tests for documented Codex configurations.
+
+### Changed
+
+- Moved TypeScript declarations and TSTyche tests into `types/`.
 
 ## [1.0.0] - 2026-11-21
 
